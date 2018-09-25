@@ -1,9 +1,12 @@
 <div class="dog">
 
-  <h1>It's a dog</h1>
-
-  <h3><%= @breed.name.humanize %></h3>
-
-  <%= image_tag @breed.pic_url %>
-
+<h1>It's a <%= @breed.humanize.titlecase %></h1>
+  
+  <%= form_tag( {action: 'index'}, method: 'GET' ) do %>
+    <h3>Select Bread: <%= select_tag "breed", options_for_select(get_breeds, @breed) %></h3>   
+    <%= submit_tag "Show The Breed"  %>
+  <% end %>
+  <br/>
+  <%= image_tag @dog_url %>
 </div>
+
